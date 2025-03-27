@@ -13,7 +13,7 @@
   </header>
   <main>
     <h2>Lägg till kurser</h2>
-    <p>Fyll i formuläret nedan för att lägga till en kurs till kurslistan</p>
+    <p id="formInstruction">Fyll i formuläret nedan för att lägga till en kurs till kurslistan.</p>
     <form id="courseForm">
       <label for="code">Kurskod:</label><br>
       <input type="text" id="code" required>
@@ -34,7 +34,8 @@
       <button type="submit">LÄGG TILL</button>
     </form>
     <h2>Kurslistan:</h2>
-    <div id="courseList"></div>
+    <div id="courseList">
+    </div>
   </main>
   <footer>Frida Jansson</footer>
   <script type="module" src="/src/main.ts"></script>
