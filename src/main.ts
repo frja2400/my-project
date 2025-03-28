@@ -38,5 +38,15 @@ courseForm.addEventListener("submit", (e) => {
         syllabus: urlInput.value
     }
 
+    const existingCourses = document.querySelectorAll("#courseList tr");
+    
+    for (let i = 0; i < existingCourses.length; i++) {
+        const courseCode = existingCourses[i].querySelector("td")?.textContent;
+        if (courseCode === newCourse.code) {
+            alert('Kurskoden måste vara unik.');
+            return;
+        }
+    }
+
     printCourseInfo(newCourse);
 });
