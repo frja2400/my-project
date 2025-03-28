@@ -10,7 +10,14 @@ interface courseInfo {
 function printCourseInfo(course: courseInfo): void {
     const courseListEl = document.getElementById("courseList");
     if (courseListEl) {
-        courseListEl.innerHTML = `${course.name} - ${course.code} - ${course.progression} - ${course.syllabus}`
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${course.code}</td>
+            <td>${course.name}</td>
+            <td>${course.progression}</td>
+            <td><a href="${course.syllabus}" target="_blank">${course.syllabus}</a></td>
+        `;
+        courseListEl.appendChild(row);
     }
 }
 

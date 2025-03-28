@@ -76,3 +76,18 @@ h2 {
 #formInstruction {
   text-align: center;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid lightgrey;
+  padding: 20px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
