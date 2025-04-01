@@ -16,6 +16,7 @@ main {
   max-width: 800px;
   padding: 2%;
   background-color: white;
+  box-sizing: border-box;
 }
 
 p {
@@ -25,7 +26,7 @@ p {
 header,
 footer {
   background-color: rgb(88, 0, 88);
-  Width: 100%;
+  width: 100%;
   text-align: center;
   color: white;
 }
