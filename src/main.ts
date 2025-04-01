@@ -20,10 +20,10 @@ function printCourseInfo(course: courseInfo): void {
     if (courseListEl) {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${course.code}</td>
-            <td>${course.name}</td>
-            <td>${course.progression}</td>
-            <td><a href="${course.syllabus}" target="_blank">${course.syllabus}</a></td>
+            <td data-label="Kurskod">${course.code}</td>
+            <td data-label="Kursnamn">${course.name}</td>
+            <td data-label="Progression">${course.progression}</td>
+            <td data-label="URL till kursplanen"><a href="${course.syllabus}" target="_blank">${course.syllabus}</a></td>
         `;
         courseListEl.appendChild(row);
     }
