@@ -7,6 +7,14 @@ interface courseInfo {
     syllabus: string
 }
 
+function saveCourses(courses: courseInfo[]): void {
+    localStorage.setItem('courses', JSON.stringify(courses));
+}
+
+function getCourses(): courseInfo[] {
+    return JSON.parse(localStorage.getItem('courses') || '[]');
+}
+
 function printCourseInfo(course: courseInfo): void {
     const courseListEl = document.getElementById("courseList");
     if (courseListEl) {
@@ -19,6 +27,11 @@ function printCourseInfo(course: courseInfo): void {
         `;
         courseListEl.appendChild(row);
     }
+}
+
+function displayCourses(): void {
+    const courses = getCourses();
+    courses.forEach(course => printCourseInfo(course));
 }
 
 const courseForm = document.getElementById("courseForm") as HTMLFormElement;
@@ -38,15 +51,21 @@ courseForm.addEventListener("submit", (e) => {
         syllabus: urlInput.value
     }
 
-    const existingCourses = document.querySelectorAll("#courseList tr");
-    
-    for (let i = 0; i < existingCourses.length; i++) {
-        const courseCode = existingCourses[i].querySelector("td")?.textContent;
-        if (courseCode === newCourse.code) {
-            alert('Kurskoden måste vara unik.');
-            return;
-        }
+    const courses = getCourses();
+
+    if (courses.some(course => course.code === newCourse.code)) {
+        alert('Kurskoden måste vara unik.');
+        return;
     }
 
+    courses.push(newCourse);
+    saveCourses(courses);
     printCourseInfo(newCourse);
+
+    nameInput.value = '';
+    codeInput.value = '';
+    progressionInput.value = '';
+    urlInput.value = '';
 });
+
+displayCourses();
